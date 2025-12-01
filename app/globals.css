@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+/* ----------------- THEME TOKENS ----------------- */
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -19,8 +21,110 @@
   }
 }
 
+/* ----------------- BASE LAYOUT ----------------- */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Arial, Helvetica, sans-serif;
+}
+
+/* Optional: keep main content centered on large screens */
+.app-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px 40px;
+}
+
+/* ----------------- SHARED HEADER ----------------- */
+/* Use this for BOTH demo header and logged-in header */
+
+.app-header {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 16px 16px 12px;
+  background: #ffffff;
+}
+
+.app-header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px 16px;
+  flex-wrap: wrap; /* ✅ allow wrapping instead of overflowing */
+}
+
+.app-header-brand {
+  flex: 1 1 160px;
+  min-width: 0;
+}
+
+.app-header-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.app-header-subtitle {
+  margin-top: 2px;
+  font-size: 13px;
+  color: #666666;
+}
+
+/* nav chips row */
+.app-header-nav {
+  display: flex;
+  flex-wrap: wrap; /* ✅ pills can go onto a second line */
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.app-header-chip {
+  border-radius: 999px;
+  border: 1px solid #d4d4d4;
+  padding: 6px 14px;
+  font-size: 14px;
+  line-height: 1.2;
+  background: #ffffff;
+  color: #111111;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.app-header-chip:hover {
+  background: #f5f5f5;
+}
+
+.app-header-chip--active {
+  background: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+.app-header-chip--primary {
+  background: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+/* --------- Mobile tweaks --------- */
+@media (max-width: 640px) {
+  .app-header-inner {
+    align-items: flex-start;
+  }
+
+  .app-header-nav {
+    width: 100%;
+    justify-content: flex-start; /* nav chips start under the title */
+  }
 }
