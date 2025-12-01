@@ -178,7 +178,6 @@ export default function DashboardPage() {
     const now = new Date();
     return expenses
       .filter((e) => new Date(e.due_date) >= now)
-      .slice(0, 5);
   }, [expenses]);
 
   if (!user && loading) {
